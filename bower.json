@@ -1,0 +1,20 @@
+{
+  "name": "testlab1",
+  "description": "Test nodejs server",
+  "main": "index.js",
+  "authors": [
+    "Quan"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "boostrap#^3.3.7"
+  }
+}
