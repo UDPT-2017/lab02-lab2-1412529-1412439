@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+
+    <link rel="stylesheet" href="/components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+          {{> header}}
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="page-header"></h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                {{{body}}}
+            </div>
+        </div>
+    </div>
+<h1>meo bach</h1>
+<!-- modal-->
+{{> register}}
+{{> login}}
+
+<!-- login-->
+
+
+<div id ="loader" class="loader"></div>
+    <script src="/components/jquery/dist/jquery.js" charset="utf-8"></script>
+    <script src="/app/controllers/Client_PartialsController.js"></script>
+    <script src="/components/bootstrap/dist/js/bootstrap.js" charset="utf-8"></script>
+</body>
+
+</html>

@@ -4,4 +4,5 @@ module.exports = {
     messages: require('./MessagesController'),
     users: require('./UsersController'),
     about: require('./AboutController'),
+
 }
