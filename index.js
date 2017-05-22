@@ -19,7 +19,7 @@ var jsonParser = bodyParser.json()
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 //start
 var port = 3000;
-app.listen(port, function () {
+app.listen(process.env.PORT ||port, function () {
   console.log('Example app listening on port ' + port + '!');
 });
 app.post('/register',jsonParser,controllers.home.register);
@@ -27,6 +27,9 @@ app.post('/login',jsonParser,controllers.home.login);
 app.post('/add_friend',jsonParser,controllers.users.add_friend);
 app.post('/un_friend',jsonParser,controllers.users.un_friend);
 app.post('/load_user',jsonParser,controllers.home.load_user);
+app.post('/load_messages',jsonParser,controllers.messages.load_messages);
+app.post('/update_message',jsonParser,controllers.messages.update_messages);
+app.post('/send_messages',jsonParser,controllers.messages.send_messages);
 app.get('/logout',controllers.home.logout);
 app.get('/content',controllers.home.auth,function(req,res){
   res.send("see this if you log in sucess");

@@ -23,9 +23,9 @@ $(document).ready(function(){
   //////////////////////////////////////////
 
 
-    $("#form_register").submit(function(e){
+    $("#button_submit").click(function(e){
 
-
+                e.preventDefault();
 
                 var data = {};
       					data.email =$("#email").val();
@@ -33,15 +33,18 @@ $(document).ready(function(){
                 data.user_name=$("#user_name").val();
                 data.phone=$("#phone").val();
 
-
+                if(data.email==""||data.password==""||data.user_name==""||data.phone=="")
+                {
+                  alert("Vui long dien day du thong tin");
+                }
+                else{
       					$.ajax({
       						type: 'POST',
-                  async:false,
                   data: JSON.stringify(data),
 				          contentType: 'application/json',
                   url: '/register',
                   success: function(data) {
-                        console.log('success');
+                        //console.log('success');
                         alert(data);
                       },
                   error:function(jqXHR,textStatus,errorThrown){
@@ -51,6 +54,12 @@ $(document).ready(function(){
                   }
 
                           });
+                        }
+                        $("#email").text("");
+                        $("#password").text("");
+                        $("#user_name").text("");
+                        $("#phone").text("");
+                        $("#myModal").modal('hide');
     });
     /////////////////////////////////////////////////
     $("#form_login").submit(function(e){
@@ -65,8 +74,10 @@ $(document).ready(function(){
                 var data = {};
       					data.email =$("#email_login").val();
       					data.password =$("#password_login").val();
-
-
+                if(data.email==""||data.password==""){
+                  alert("vui long dien day du email va password de dang nhap")
+                }
+                else{
       					$.ajax({
       						type: 'POST',
                   //async:false,
@@ -93,6 +104,7 @@ $(document).ready(function(){
                   }
 
                           });
+                        }
     });
     //////////////////////////////////////////////////
     $("#register_a").click(function(){
@@ -103,8 +115,58 @@ $(document).ready(function(){
     });
   //
   $("#logout_a").click(function(){
-    $("#logout_li").hide();
-    $("#login_li").show();
-    $("#user_li").hide();
+    $.ajax({
+      type: 'GET',
+      //async:false,
+      url: '/logout',
+      success: function(data) {
+            //window.login=true;
+            console.log(data);
+
+
+
+              $("#logout_li").hide();
+              $("#login_li").show();
+              $("#user_li").hide();
+              window.location="/home";
+              //alert("1233");
+
+
+          },
+      error:function(jqXHR,textStatus,errorThrown){
+      //  console.log("error");
+        console.log(textStatus);
+        console.log(errorThrown);
+      }
+
+              });
+
   });
+/*  $("#nav_home").click(function(){
+    alert("123");
+    $(this).addClass("active");
+    $(y).css('background-color', ' #ffffcc')
+  //  $("#nav_messages").removeClass("active");
+  //  $("#nav_users").removeClass("active");
+    //$("#nav_about").removeClass("active");
+  });
+  $("#nav_messages").click(function(){
+    $(this).addClass("active");
+    //$("#nav_home").removeClass("active");
+    //$("#nav_users").removeClass("active");
+    //$("#nav_about").removeClass("active");
+  });
+  $("#nav_users").click(function(){
+    $(this).addClass("active");
+    //$("#nav_messages").removeClass("active");
+    //$("#nav_home").removeClass("active");
+    //$("#nav_about").removeClass("active");
+  });
+  $("#nav_about").click(function(){
+    $(this).addClass("active");
+    //$("#nav_messages").removeClass("active");
+    //$("#nav_users").removeClass("active");
+    //$("#nav_home").removeClass("active");
+  });*/
+
     });
