@@ -24,16 +24,13 @@ $.ajax({
 
         //user=data.split(",");
       var a=JSON.parse(data);
-
+    
       ////////////////////////////////
       $("#new_messages").click(function(){
         $('#modal_sendmessages').modal('show');
       //  $("#form_send").show();
 
-        for(var i=0;i<a.friend.length;i++){
-          var str="<option>"+a.friend[i]+"</option>";
-          $("#select_user").append(str);
-        }
+
 
         //////////////////////////////////////////////////////
 

@@ -18,10 +18,8 @@ var jsonParser = bodyParser.json()
 // create application/x-www-form-urlencoded parser
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 //start
-var port = 3000;
-app.listen(process.env.PORT ||port, function () {
-  console.log('Example app listening on port ' + port + '!');
-});
+var port = 1000;
+app.listen(process.env.PORT||1000);
 app.post('/register',jsonParser,controllers.home.register);
 app.post('/login',jsonParser,controllers.home.login);
 app.post('/add_friend',jsonParser,controllers.users.add_friend);
