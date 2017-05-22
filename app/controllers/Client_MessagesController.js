@@ -24,7 +24,7 @@ $.ajax({
 
         //user=data.split(",");
       var a=JSON.parse(data);
-    
+
       ////////////////////////////////
       $("#new_messages").click(function(){
         $('#modal_sendmessages').modal('show');
@@ -105,7 +105,7 @@ $.ajax({
 
         $(y).css('background-color', ' #ffffcc');
 
-        $(y).css('background-color', ' green');
+      //  $(y).css('background-color', ' green');
 
         ///////////////////////////////////////
         var mydata={};
