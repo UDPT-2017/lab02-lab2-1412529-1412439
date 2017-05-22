@@ -94,3 +94,47 @@ padding:30px;
 .wrap_button{
 margin-left: 150px;
 }
+
+
+
+
+
+
+
+
+.layout{
+  position: relative;
+  cursor: pointer;
+
+  width: 700px;
+  height: 150px;
+  background-color: #ffffcc;
+  margin-left: 200px;
+  margin-bottom: 30px;
+  border: 1px solid;
+
+}
+.from{
+  font-size: 25px;
+  margin-left: 10px;
+}
+.content{
+  margin-left: 5px;
+  font-size: 20px;
+  font-weight: bold;
+  color:#999966;
+}
+.timereceived{
+  position: absolute;
+  right: 0;
+  bottom: 20px;
+}
+.timeseen{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+.div_button{
+  margin-left: 1000px;
+  margin-bottom: 30px;
+}

@@ -9,9 +9,32 @@ $.ajax({
           arr="0";
         }
         else{
-         arr=data.split(",");
+          //////////////////////////////////////////
+          var x=JSON.parse(data);
+          for(var i=0;i<x.user.length;i++){
+            console.log("data "+x.user[i]);
+          }
+          arr=x.user.slice();
+          var friend=x.friend.slice();
+          ///////////////////////////////////////////////
+         //arr=data.split(",");
         for(var i=0;i<arr.length;i++){
-          var str="<div class='wrap'><div class='decorate'>"+arr[i]+"</div><div class='wrap_button'><button class='btn-primary' id="+ i+">addfriend"+"</button></div></div>";
+          var flag=false;
+          var str="";
+          ///////////////////////////////////////////////////////////////
+          for(var j=0;j<friend.length;j++){
+            if(arr[i]==friend[j]){
+              flag=true;
+            }
+          }
+          if(flag==true){
+            str="unfriend";
+          }
+          else{
+            str="addfriend";
+          }
+          //////////////////////////////////////////////////////////////
+          var str="<div class='wrap'><div class='decorate'>"+arr[i]+"</div><div class='wrap_button'><button class='btn-primary' id="+ i+">"+str+"</button></div></div>";
             $(".divv").append(str);
         }
       for(var i=0;i<arr.length;i++){
