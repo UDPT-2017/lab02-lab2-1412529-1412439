@@ -128,6 +128,7 @@ $.ajax({
           success: function(data) {
               if(data=="1"){
                 console.log("sucess");
+
               }
               },
           error:function(jqXHR,textStatus,errorThrown){
