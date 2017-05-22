@@ -1,8 +1,7 @@
 $(document).ready(function(){
-<<<<<<< HEAD
+
   $("#nav_messages").css('background-color', '#996633');
-=======
->>>>>>> 0df340e9100beb193adfadf5c909872c7d24a3c5
+
   $("#form_send").hide();
   var user;
 $.ajax({
@@ -14,7 +13,7 @@ $.ajax({
           user="0";
         }
         else{
-<<<<<<< HEAD
+
           var a=JSON.parse(data);
           for(var i=0;i<a.friend.length;i++){
             var str="<div class='friend_list_layout'>"+a.friend[i]+"</div>";
@@ -22,27 +21,25 @@ $.ajax({
           }
         //user=data.split(",");
 
-=======
+
         //user=data.split(",");
       var a=JSON.parse(data);
->>>>>>> 0df340e9100beb193adfadf5c909872c7d24a3c5
+
       ////////////////////////////////
       $("#new_messages").click(function(){
         $('#modal_sendmessages').modal('show');
       //  $("#form_send").show();
-<<<<<<< HEAD
 
-=======
         for(var i=0;i<a.friend.length;i++){
           var str="<option>"+a.friend[i]+"</option>";
           $("#select_user").append(str);
         }
->>>>>>> 0df340e9100beb193adfadf5c909872c7d24a3c5
+
         //////////////////////////////////////////////////////
 
         /////////////////////////////////////////////////////
       });
-<<<<<<< HEAD
+
 
       /////////////////////////////////////////////////////
      $("#listFriend").click(function(){
@@ -81,10 +78,10 @@ $.ajax({
       }
       $(".divvvv").hide();
 ///////////////////////////////////////////////////////////////////////////////////////////////
-=======
+
       //////////////////////////////
       //var a=[["hoa","an com chua","17:00 15/05/2017","","1"],["lieu","lam j do t khong biet m la ai nhung hay de t yen","18:00 16/05/2017","19:05 16/05/2017","0"],["hoa","thuong em","20:34 18/05/2017","","1"]];
->>>>>>> 0df340e9100beb193adfadf5c909872c7d24a3c5
+
     for(var i=0;i<a.receive.length;i++){
       var str="<div class='layout' id="+i+"><div class='from'>From:"+a.user_receive[i]+"</div><div class='timereceived'>time received:"+a.receive[i][1]+"</div><div class='timeseen' id='time_seen'>time seen:"+a.receive[i][2]+"</div></div>";
       //console.log(str);
@@ -94,25 +91,25 @@ $.ajax({
         $(x).css('background-color', '#66ccff');
       }
       $(x).click(function(){
-<<<<<<< HEAD
+
         $("#title").text("content");
         var j=$(this).attr('id');
     $('#myModal_receive').modal('show');
     $("#content").show();
     $("#list").hide();
-=======
+
         var j=$(this).attr('id');
     $('#myModal_receive').modal('show');
->>>>>>> 0df340e9100beb193adfadf5c909872c7d24a3c5
+
     $("#content").text(a.receive[j][0]);
     var y="#"+j;
     if(a.receive[j][2]==""){
 
-<<<<<<< HEAD
+
         $(y).css('background-color', ' #ffffcc');
-=======
+
         $(y).css('background-color', ' green');
->>>>>>> 0df340e9100beb193adfadf5c909872c7d24a3c5
+
         ///////////////////////////////////////
         var mydata={};
         var time=new Date();
@@ -149,12 +146,11 @@ $.ajax({
       });
     }
     //  for(var i=0;i<x.user.length;i++){
-<<<<<<< HEAD
+
     //////////////////////////////////////////////////////////////////////////
 
     //////////////////////////////////////////////////////////////////////////
-=======
->>>>>>> 0df340e9100beb193adfadf5c909872c7d24a3c5
+
       //  console.log("data "+x.user[i]);
     //  }
       }//alert(data);
@@ -201,7 +197,7 @@ $("#send_message").click(function(){
   //////////////////////////////////////////////////////
     $('#modal_sendmessages').modal('hide');
 });
-<<<<<<< HEAD
+
 $("#listSend").click(function(){
   $(".divvv").hide();
   $(".divvvv").show();
@@ -210,6 +206,4 @@ $("#listReceive").click(function(){
   $(".divvvv").hide();
   $(".divvv").show();
 });
-=======
->>>>>>> 0df340e9100beb193adfadf5c909872c7d24a3c5
 });

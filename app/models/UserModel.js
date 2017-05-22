@@ -145,18 +145,16 @@ var userModel={
             else{
             for(var i=0;i<result.rows.length;i++){
               //console.log(result.rows[i].email);
-<<<<<<< HEAD
+
               if(result.rows[i].email!=req.session.user){
-=======
->>>>>>> 0df340e9100beb193adfadf5c909872c7d24a3c5
+
               data.push(result.rows[i].email);
 
             }
-<<<<<<< HEAD
+
 
             }
-=======
->>>>>>> 0df340e9100beb193adfadf5c909872c7d24a3c5
+
             data_final.user=data;
             flag1=false;
             count=count+1;
@@ -183,20 +181,17 @@ var userModel={
               else{
                 data2.push(result.rows[i].user1);
               }
-<<<<<<< HEAD
 
-=======
               data_final.friend=data2;
->>>>>>> 0df340e9100beb193adfadf5c909872c7d24a3c5
+
             //  console.log(result.rows[i].user1);
 
               //console.log(result.rows[i].user2);
               //data.push(result.rows[i].email);
             }
-<<<<<<< HEAD
+
             data_final.friend=data2;
-=======
->>>>>>> 0df340e9100beb193adfadf5c909872c7d24a3c5
+
             //data_final.list_friend=data2;
             //console.log(data_final);
             flag2=false;
@@ -308,7 +303,7 @@ var userModel={
 
 
         });
-<<<<<<< HEAD
+
         //////////////////////////////////////////////////////////////////////////////////////
         var query="delete from messages where (user1='"+req.session.user+"' and user2='"+req.body.user+"') or (user1='"+req.body.user+"' and user2='"+req.session.user+"')";
           console.log(query);
@@ -326,24 +321,22 @@ var userModel={
         console.log("sucess");
       }
 
-=======
->>>>>>> 0df340e9100beb193adfadf5c909872c7d24a3c5
 
 
 
 
-    }
+
+    });
+  }
 
      });
-<<<<<<< HEAD
-     while(flag1||flag2) {require('deasync').sleep(10);}
-    // console.log(count);
-     if(count==2){
-=======
+
+
+
      while(flag1) {require('deasync').sleep(10);}
     // console.log(count);
      if(count==1){
->>>>>>> 0df340e9100beb193adfadf5c909872c7d24a3c5
+
      res.end("1");
    }
    else{

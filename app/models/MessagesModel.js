@@ -70,20 +70,19 @@ var messagesModel={
                 else{
                   data2.push(result.rows[i].user1);
                 }
-<<<<<<< HEAD
+
               //  data_final.friend=data2;
-=======
+
                 data_final.friend=data2;
->>>>>>> 0df340e9100beb193adfadf5c909872c7d24a3c5
+
               //  console.log(result.rows[i].user1);
 
                 //console.log(result.rows[i].user2);
                 //data.push(result.rows[i].email);
               }
-<<<<<<< HEAD
+
               data_final.friend=data2;
-=======
->>>>>>> 0df340e9100beb193adfadf5c909872c7d24a3c5
+
               //data_final.list_friend=data2;
               //console.log(data_final);
               flag2=false;
@@ -116,29 +115,28 @@ var messagesModel={
               receive.push(result.rows[i].message);
               //send_receive.push(1);
             }
-<<<<<<< HEAD
+
             //data_final.send=send;
             //data_final.receive=receive;
             //data_final.user_send=user_send;
             //data_final.user_receive=user_receive;
-=======
+
             data_final.send=send;
             data_final.receive=receive;
             data_final.user_send=user_send;
             data_final.user_receive=user_receive;
->>>>>>> 0df340e9100beb193adfadf5c909872c7d24a3c5
+
           //  console.log(result.rows[i].user1);
 
             //console.log(result.rows[i].user2);
             //data.push(result.rows[i].email);
           }
-<<<<<<< HEAD
+
           data_final.send=send;
           data_final.receive=receive;
           data_final.user_send=user_send;
           data_final.user_receive=user_receive;
-=======
->>>>>>> 0df340e9100beb193adfadf5c909872c7d24a3c5
+
           //data_final.list_friend=data2;
           //console.log(data_final);
           flag3=false;
