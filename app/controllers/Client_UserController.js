@@ -63,7 +63,7 @@ $.ajax({
                     }
                   },
               error:function(jqXHR,textStatus,errorThrown){
-              //  console.log("error");
+                console.log("error add_friend");
                 console.log(textStatus);
                 console.log(errorThrown);
               }
@@ -93,7 +93,7 @@ $.ajax({
                   }
                 },
             error:function(jqXHR,textStatus,errorThrown){
-            //  console.log("error");
+              console.log("error un_friend");
               console.log(textStatus);
               console.log(errorThrown);
             }
@@ -106,7 +106,7 @@ $.ajax({
       }//alert(data);
       },
   error:function(jqXHR,textStatus,errorThrown){
-  //  console.log("error");
+    console.log("error load_user");
     console.log(textStatus);
     console.log(errorThrown);
   }

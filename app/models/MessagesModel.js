@@ -1,9 +1,6 @@
-var pg=require("pg");
+const pg=require("./connectDB");
 //var controllers1=require("../controllers");
 ////////////////////////////////////////////
-pg.defaults.ssl = true;
-//var controllers=require("../controllers")
-var url="postgres://rwqofhotvaiztw:189237b5372f6aa2d15585cd06b0a0224d86c2cd3bef54e048ca2b55c2f60a6b@ec2-23-23-111-171.compute-1.amazonaws.com:5432/d8orgaldunjm6c";
 var messagesModel={
   load_messages: function(req,res){
       var count=0;
@@ -15,12 +12,12 @@ var messagesModel={
       var send_receive=[];//0 send 1 receive
         var send=[],receive=[];
       if(req.session.user){
-        pg.connect(url, function(err, client) {
+        pg.connect(function(err, client,done) {
           if(err){
             flag1=false;
             flag2=false;
             flag3=false;
-            res.end();
+            //res.end();
              console.log(err);
            }
            else{
@@ -31,10 +28,11 @@ var messagesModel={
             var query="select * from users";
           //  console.log(query);
             client.query(query, function (err, result) {
+              done();
               if(err){
                 console.log(err);
                 flag1=false;
-                res.end();
+                //res.end();
               }
               else{
               for(var i=0;i<result.rows.length;i++){
@@ -54,10 +52,11 @@ var messagesModel={
           var query1="select * from friend where user1='"+req.session.user+"'or user2='"+req.session.user+"'";
             //console.log(query1);
             client.query(query1, function (err, result) {
+              done();
               if(err){
                 console.log(err);
                 flag2=false;
-                res.end();
+              //  res.end();
               }
               else{
                 console.log("sucess");
@@ -95,10 +94,11 @@ var messagesModel={
         var query2="select * from messages where user1='"+req.session.user+"'or user2='"+req.session.user+"'";
 
         client.query(query2, function (err, result) {
+          done();
           if(err){
             console.log(err);
             flag3=false;
-            res.end();
+          //  res.end();
           }
           else{
             console.log("sucess");
@@ -169,7 +169,7 @@ var messagesModel={
   update_messages: function(req,res){
     var check=false;
     var flag=true;
-    pg.connect(url, function(err, client) {
+    pg.connect(function(err, client,done) {
       if(err){
         flag=false;
          console.log(err);
@@ -179,6 +179,7 @@ var messagesModel={
         var query="update messages set message='{"+'"'+req.body.data+'","'+req.body.time1+'","'+req.body.time2+'","'+req.body.status+'"'+"}'"+" where user1='"+req.body.user+"' and user2='"+req.session.user+"' and message[2]='"+req.body.time1+"'";
         console.log(query);
           client.query(query, function (err, result) {
+            done();
           if(err){
             flag=false;
             console.log(err);
@@ -208,7 +209,7 @@ var messagesModel={
   send_messages:function(req,res){
     var check=false;
     var flag=true;
-    pg.connect(url, function(err, client) {
+    pg.connect(function(err, client,done) {
       if(err){
         flag=false;
          console.log(err);
@@ -218,6 +219,7 @@ var messagesModel={
         var query="insert into messages values('"+req.session.user+"','"+req.body.user+"','"+"{"+'"'+req.body.data+'","'+req.body.time+'","","1"}'+"')";
         console.log(query);
           client.query(query, function (err, result) {
+            done();
           if(err){
             flag=false;
             console.log(err);

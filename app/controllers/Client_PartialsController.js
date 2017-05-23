@@ -14,7 +14,7 @@ $(document).ready(function(){
           //alert(data);
         },
     error:function(jqXHR,textStatus,errorThrown){
-    //  console.log("error");
+      console.log("error of check_login");
       console.log(textStatus);
       console.log(errorThrown);
     }
@@ -48,7 +48,7 @@ $(document).ready(function(){
                         alert(data);
                       },
                   error:function(jqXHR,textStatus,errorThrown){
-                  //  console.log("error");
+                    console.log("fail register");
                     console.log(textStatus);
                     console.log(errorThrown);
                   }
@@ -98,7 +98,7 @@ $(document).ready(function(){
                         }
                       },
                   error:function(jqXHR,textStatus,errorThrown){
-                  //  console.log("error");
+                    console.log("error login");
                     console.log(textStatus);
                     console.log(errorThrown);
                   }
@@ -134,7 +134,7 @@ $(document).ready(function(){
 
           },
       error:function(jqXHR,textStatus,errorThrown){
-      //  console.log("error");
+        console.log("error logout");
         console.log(textStatus);
         console.log(errorThrown);
       }

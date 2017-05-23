@@ -1,9 +1,4 @@
-var pg=require("pg");
-//var controllers1=require("../controllers");
-////////////////////////////////////////////
-pg.defaults.ssl = true;
-var controllers=require("../controllers")
-var url="postgres://rwqofhotvaiztw:189237b5372f6aa2d15585cd06b0a0224d86c2cd3bef54e048ca2b55c2f60a6b@ec2-23-23-111-171.compute-1.amazonaws.com:5432/d8orgaldunjm6c";
+const pg=require("./connectDB");
 ////////////////////////////////////////////
 var userModel={
   count:0,
@@ -13,12 +8,14 @@ var userModel={
     //res.send("12313");
 
     var flag=true;
-    console.log(req.body);
-    var url="postgres://rwqofhotvaiztw:189237b5372f6aa2d15585cd06b0a0224d86c2cd3bef54e048ca2b55c2f60a6b@ec2-23-23-111-171.compute-1.amazonaws.com:5432/d8orgaldunjm6c";
+    //console.log(req.body);
+    //var url="postgres://rwqofhotvaiztw:189237b5372f6aa2d15585cd06b0a0224d86c2cd3bef54e048ca2b55c2f60a6b@ec2-23-23-111-171.compute-1.amazonaws.com:5432/d8orgaldunjm6c";
    //res.send(req.body);
   // res.send(req.body.email);
-    pg.connect(url, function(err, client) {
+    pg.connect(function(err, client,done) {
       if(err){
+        flag=false;
+        result1="khong ket noi duoc database";
          console.log(err);
        }
        else{
@@ -28,7 +25,7 @@ var userModel={
         var query="INSERT INTO USERS VALUES('"+req.body.email+"','"+req.body.password+"','"+req.body.user_name+"','"+req.body.phone+"');";
         console.log(query);
         client.query(query, function (err, result) {
-          //  done();
+            done();
             if (err) {
               //res.send("meo meo");
               result1="dang ky that bai";
@@ -69,8 +66,9 @@ var userModel={
         //var url="postgres://rwqofhotvaiztw:189237b5372f6aa2d15585cd06b0a0224d86c2cd3bef54e048ca2b55c2f60a6b@ec2-23-23-111-171.compute-1.amazonaws.com:5432/d8orgaldunjm6c";
        //res.send(req.body);
       // res.send(req.body.email);
-        pg.connect(url, function(err, client) {
+        pg.connect( function(err, client,done) {
           if(err){
+            flag=false;
              console.log(err);
            }
            else{
@@ -81,7 +79,7 @@ var userModel={
             var query="select * from users where email='"+req.body.email+"' and password='"+req.body.password+"'";
             console.log(query);
             client.query(query, function (err, result) {
-              //  done();
+                done();
                 if (err) {
                   //res.send("meo meo");
                   result1=0;
@@ -122,11 +120,11 @@ var userModel={
     var data2=[];
     var data=[];
     if(req.session.user){
-      pg.connect(url, function(err, client) {
+      pg.connect( function(err, client,done) {
         if(err){
           flag1=false;
         //  flag2=false;
-          res.end();
+        //  res.end();
            console.log(err);
          }
          else{
@@ -137,10 +135,11 @@ var userModel={
           var query="select * from users";
         //  console.log(query);
           client.query(query, function (err, result) {
+            done();
             if(err){
               console.log(err);
               flag1=false;
-              res.end();
+              //res.end();
             }
             else{
             for(var i=0;i<result.rows.length;i++){
@@ -165,10 +164,11 @@ var userModel={
         var query1="select * from friend where user1='"+req.session.user+"'or user2='"+req.session.user+"'";
           //console.log(query1);
           client.query(query1, function (err, result) {
+            done();
             if(err){
               console.log(err);
               flag2=false;
-              res.end();
+              //res.end();
             }
             else{
               console.log("sucess");
@@ -222,7 +222,7 @@ var userModel={
   add_friend:function(req,res){
     var count=0;
     var flag1=true,flag2=true;
-    pg.connect(url, function(err, client) {
+    pg.connect( function(err, client,done) {
       if(err){
         flag1=false;
         //flag2=false;
@@ -236,10 +236,10 @@ var userModel={
         //var query="create table messages (user1 text,user2 text,message text[][],primary key(user1,user2))";
       //  var query="insert into messages values('thong','beo','{{"+'"we","12:05"},'+'{"mai di hoc","15:00"}'+"}')";
       var  query="insert into friend(user1,user2) values('"+req.session.user+"','"+req.body.user+"')";
-        console.log(query);
+      //  console.log(query);
       //  console.log(query);
         client.query(query, function (err, result) {
-
+          done();
     if(err){
       flag1=false;
     //  flag2=false;
@@ -271,7 +271,7 @@ var userModel={
   un_friend:function(req,res){
     var count=0;
     var flag1=true,flag2=true;
-    pg.connect(url, function(err, client) {
+    pg.connect( function(err, client,done) {
       if(err){
         flag1=false;
       //  flag2=false;
@@ -289,7 +289,7 @@ var userModel={
         console.log(query);
       //  console.log(query);
         client.query(query, function (err, result) {
-
+          done();
     if(err){
       flag1=false;
       //flag2=false;
@@ -309,7 +309,7 @@ var userModel={
           console.log(query);
         //  console.log(query);
           client.query(query, function (err, result) {
-
+            done();
       if(err){
         flag2=false;
         //flag2=false;

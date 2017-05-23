@@ -154,7 +154,7 @@ $.ajax({
       }//alert(data);
       },
   error:function(jqXHR,textStatus,errorThrown){
-  //  console.log("error");
+   console.log("load messages  fail");
     console.log(textStatus);
     console.log(errorThrown);
   }
