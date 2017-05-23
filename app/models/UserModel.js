@@ -335,7 +335,7 @@ var userModel={
 
      while(flag1) {require('deasync').sleep(10);}
     // console.log(count);
-     if(count==1){
+     if(count==2){
 
      res.end("1");
    }
