@@ -19,7 +19,7 @@ var jsonParser = bodyParser.json()
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 //start
 var port = 1000;
-app.listen(3000);
+app.listen(process.env.PORT||3000);
 app.post('/register',jsonParser,controllers.home.register);
 app.post('/login',jsonParser,controllers.home.login);
 app.post('/add_friend',jsonParser,controllers.users.add_friend);
