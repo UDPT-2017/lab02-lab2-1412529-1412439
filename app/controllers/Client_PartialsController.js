@@ -1,6 +1,6 @@
 
 $(document).ready(function(){
-  //////////////////////////////////////////
+
   $.ajax({
     type: 'POST',
     url: '/check_login',
@@ -11,7 +11,7 @@ $(document).ready(function(){
             $("#logout_li").show();
             $("#user_li").show();
           }
-          //alert(data);
+
         },
     error:function(jqXHR,textStatus,errorThrown){
       console.log("error of check_login");
@@ -20,13 +20,12 @@ $(document).ready(function(){
     }
 
   });
-  //////////////////////////////////////////
+
 
 
     $("#button_submit").click(function(e){
 
                 e.preventDefault();
-
                 var data = {};
       					data.email =$("#email").val();
       					data.password =$("#password").val();
@@ -61,36 +60,29 @@ $(document).ready(function(){
                         $("#phone").text("");
                         $("#myModal").modal('hide');
     });
-    /////////////////////////////////////////////////
-    $("#form_login").submit(function(e){
-      //alert("12333");
-      $("#Modal_login").modal('hide');
-    //  $("#loader").show();
-    //  $('#loader').css('visibility', 'visible');
-    login=true;
-        e.preventDefault();
 
-
+      $("#form_login").submit(function(e){
+                $("#Modal_login").modal('hide');
+                login=true;
+                e.preventDefault();
                 var data = {};
       					data.email =$("#email_login").val();
       					data.password =$("#password_login").val();
                 if(data.email==""||data.password==""){
-                  alert("vui long dien day du email va password de dang nhap")
+                alert("vui long dien day du email va password de dang nhap")
                 }
                 else{
       					$.ajax({
       						type: 'POST',
-                  //async:false,
                   data: JSON.stringify(data),
 				          contentType: 'application/json',
                   url: '/login',
                   success: function(data) {
-                        //window.login=true;
 
                         console.log('success');
                         if(data=="1"){
                           window.location='/messages';
-                          //alert("1233");
+
 
                         }
                         else{
@@ -106,7 +98,7 @@ $(document).ready(function(){
                           });
                         }
     });
-    //////////////////////////////////////////////////
+
     $("#register_a").click(function(){
       $("#myModal").modal('show');
     });
@@ -117,10 +109,9 @@ $(document).ready(function(){
   $("#logout_a").click(function(){
     $.ajax({
       type: 'GET',
-      //async:false,
       url: '/logout',
       success: function(data) {
-            //window.login=true;
+
             console.log(data);
 
 
@@ -129,7 +120,7 @@ $(document).ready(function(){
               $("#login_li").show();
               $("#user_li").hide();
               window.location="/home";
-              //alert("1233");
+
 
 
           },
@@ -142,31 +133,6 @@ $(document).ready(function(){
               });
 
   });
-/*  $("#nav_home").click(function(){
-    alert("123");
-    $(this).addClass("active");
-    $(y).css('background-color', ' #ffffcc')
-  //  $("#nav_messages").removeClass("active");
-  //  $("#nav_users").removeClass("active");
-    //$("#nav_about").removeClass("active");
-  });
-  $("#nav_messages").click(function(){
-    $(this).addClass("active");
-    //$("#nav_home").removeClass("active");
-    //$("#nav_users").removeClass("active");
-    //$("#nav_about").removeClass("active");
-  });
-  $("#nav_users").click(function(){
-    $(this).addClass("active");
-    //$("#nav_messages").removeClass("active");
-    //$("#nav_home").removeClass("active");
-    //$("#nav_about").removeClass("active");
-  });
-  $("#nav_about").click(function(){
-    $(this).addClass("active");
-    //$("#nav_messages").removeClass("active");
-    //$("#nav_users").removeClass("active");
-    //$("#nav_home").removeClass("active");
-  });*/
+
 
     });

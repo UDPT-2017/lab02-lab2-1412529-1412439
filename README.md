@@ -6,7 +6,7 @@ Thành viên:
 * [x] **1412439** Nguyễn Hoàng Quân (NguyenHoangQuan2503)
 * [X] **1412529** Bạch Thiên Quốc Minh Thông (meobach)
 
-
+Link app: **https://lab2-1412529-1412439.herokuapp.com/home**
 Link youtube demo: **https://youtu.be/HuAcc5VlzIE**
 
 

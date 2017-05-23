@@ -1,6 +1,5 @@
 const pg=require("./connectDB");
-//var controllers1=require("../controllers");
-////////////////////////////////////////////
+
 var messagesModel={
   load_messages: function(req,res){
       var count=0;
@@ -9,7 +8,7 @@ var messagesModel={
       var data2=[];
       var data=[];
       var user_send=[],user_receive=[];
-      var send_receive=[];//0 send 1 receive
+      var send_receive=[];
         var send=[],receive=[];
       if(req.session.user){
         pg.connect(function(err, client,done) {
@@ -17,26 +16,21 @@ var messagesModel={
             flag1=false;
             flag2=false;
             flag3=false;
-            //res.end();
+
              console.log(err);
            }
            else{
-            //res.send(JSON.stringify(req.body));
+
             console.log("connect to postgres");
-          //s  console.log(flag);
-          //  var query="INSERT INTO USERS VALUES('"+req.body.email+"','"+req.body.password+"','"+req.body.user_name+"','"+req.body.phone+"');";
             var query="select * from users";
-          //  console.log(query);
             client.query(query, function (err, result) {
               done();
               if(err){
                 console.log(err);
                 flag1=false;
-                //res.end();
               }
               else{
               for(var i=0;i<result.rows.length;i++){
-                //console.log(result.rows[i].email);
                 if(result.rows[i].email!=req.session.user){
                 data.push(result.rows[i].email);
               }
@@ -50,18 +44,14 @@ var messagesModel={
 
             });
           var query1="select * from friend where user1='"+req.session.user+"'or user2='"+req.session.user+"'";
-            //console.log(query1);
             client.query(query1, function (err, result) {
               done();
               if(err){
                 console.log(err);
                 flag2=false;
-              //  res.end();
               }
               else{
                 console.log("sucess");
-
-              //  console.log(result.rows.length);
               for(var i=0;i<result.rows.length;i++){
                 if(result.rows[i].user1==req.session.user){
                   data2.push(result.rows[i].user2)
@@ -69,67 +59,38 @@ var messagesModel={
                 else{
                   data2.push(result.rows[i].user1);
                 }
-
-              //  data_final.friend=data2;
-
                 data_final.friend=data2;
-
-              //  console.log(result.rows[i].user1);
-
-                //console.log(result.rows[i].user2);
-                //data.push(result.rows[i].email);
               }
-
               data_final.friend=data2;
-
-              //data_final.list_friend=data2;
-              //console.log(data_final);
               flag2=false;
               count=count+1;
             }
-
-
           });
-          ////////////////////////////////////////////////////////////////////
         var query2="select * from messages where user1='"+req.session.user+"'or user2='"+req.session.user+"'";
-
         client.query(query2, function (err, result) {
           done();
           if(err){
             console.log(err);
             flag3=false;
-          //  res.end();
           }
           else{
             console.log("sucess");
 
-          //  console.log(result.rows.length);
           for(var i=0;i<result.rows.length;i++){
             if(result.rows[i].user1==req.session.user){
               user_send.push(result.rows[i].user2)
               send.push(result.rows[i].message)
-            //  send_receive.push(0);
             }
             else{
               user_receive.push(result.rows[i].user1);
               receive.push(result.rows[i].message);
-              //send_receive.push(1);
             }
-
-            //data_final.send=send;
-            //data_final.receive=receive;
-            //data_final.user_send=user_send;
-            //data_final.user_receive=user_receive;
 
             data_final.send=send;
             data_final.receive=receive;
             data_final.user_send=user_send;
             data_final.user_receive=user_receive;
 
-          //  console.log(result.rows[i].user1);
-
-            //console.log(result.rows[i].user2);
-            //data.push(result.rows[i].email);
           }
 
           data_final.send=send;
@@ -137,15 +98,13 @@ var messagesModel={
           data_final.user_send=user_send;
           data_final.user_receive=user_receive;
 
-          //data_final.list_friend=data2;
-          //console.log(data_final);
           flag3=false;
           count=count+1;
         }
 
 
       });
-          /////////////////////////////////////////////////////////////////////
+
 
 
     }

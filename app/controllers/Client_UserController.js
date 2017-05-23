@@ -10,19 +10,18 @@ $.ajax({
           arr="0";
         }
         else{
-          //////////////////////////////////////////
+
           var x=JSON.parse(data);
           for(var i=0;i<x.user.length;i++){
             console.log("data "+x.user[i]);
           }
           arr=x.user.slice();
           var friend=x.friend.slice();
-          ///////////////////////////////////////////////
-         //arr=data.split(",");
+
         for(var i=0;i<arr.length;i++){
           var flag=false;
           var str="";
-          ///////////////////////////////////////////////////////////////
+
           for(var j=0;j<friend.length;j++){
             if(arr[i]==friend[j]){
               flag=true;
@@ -34,7 +33,7 @@ $.ajax({
           else{
             str="addfriend";
           }
-          //////////////////////////////////////////////////////////////
+
           var str="<div class='wrap'><div class='decorate'>"+arr[i]+"</div><div class='wrap_button'><button class='btn-primary' id="+ i+">"+str+"</button></div></div>";
             $(".divv").append(str);
         }
@@ -46,7 +45,7 @@ $.ajax({
           if($(this).html()=="addfriend"){
             var data={};
             data.user=arr[id];
-            ///////////////////////////////////////////////////
+
             $.ajax({
               type: 'POST',
               data: JSON.stringify(data),
@@ -69,14 +68,14 @@ $.ajax({
               }
 
                       });
-            ///////////////////////////////////////////////////
+
 
 
         }
         else{
           var data={};
           data.user=arr[id];
-          ///////////////////////////////////////////////////
+
           $.ajax({
             type: 'POST',
             data: JSON.stringify(data),
@@ -100,10 +99,10 @@ $.ajax({
 
                     });
         }
-          //alert(x);
+
         })
       }
-      }//alert(data);
+      }
       },
   error:function(jqXHR,textStatus,errorThrown){
     console.log("error load_user");
@@ -112,27 +111,5 @@ $.ajax({
   }
 
 });
-/*alert(arr);
-if(arr!="0"){
 
-  //var arr=["meo con","thong xin","xin beo","meo bach","hoa nguyen","khong ten","my hoa"];
-  for(var i=0;i<arr.length;i++){
-    var str="<div class='wrap'><div class='decorate'>"+arr[i]+"</div><div class='wrap_button'><button class='btn-primary' id="+ i+">add friend"+"</button></div></div>";
-      $(".divv").append(str);
-  }
-for(var i=0;i<arr.length;i++){
-  var x="#"+i;
-  $(x).click(function(){
-    console.log($(this).attr('id'));
-    if($(this).html()=="add friend"){
-    $(this).html('unfriend');
-  }
-  else{
-    $(this).html('add friend');
-  }
-    //alert(x);
-  })
-}
-}
-*/
 });
